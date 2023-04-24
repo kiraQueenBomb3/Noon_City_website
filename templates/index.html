@@ -6,23 +6,25 @@
     <a href="news" class="btn btn-secondary">Добавить новость</a>
     {% endif %}</h1>
 {% for item in news%}
-    <div class="col-md6 border rounded">
-        <div>
-            {{item.content}}
-        </div>
-        <div>
-            Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
-        </div>
-        {% if current_user.is_authenticated and current_user == item.user %}
-            <div>
-                <a href="/news/{{ item.id }}" class="btn btn-warning">
-                    Изменить
-                </a>
-                <a href="/news_delete/{{ item.id }}" class="btn btn-danger">
-                    Удалить
-                </a>
-            </div>
-        {% endif %}
+<div class="col-md6 border rounded">
+    <div>
+        {{item.content}}
     </div>
+    <div>
+        Автор - <a href="/profile/{{ item.user_id }}" class="btn btn-warning">
+        {{ item.user.name }}
+    </a>, Дата написания - {{item.created_date}}
+    </div>
+    {% if current_user.is_authenticated and current_user == item.user %}
+    <div>
+        <a href="/news/{{ item.id }}" class="btn btn-warning">
+            Изменить
+        </a>
+        <a href="/news_delete/{{ item.id }}" class="btn btn-danger">
+            Удалить
+        </a>
+    </div>
+    {% endif %}
+</div>
 {% endfor %}
 {% endblock %}
