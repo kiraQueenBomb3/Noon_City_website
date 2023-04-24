@@ -70,7 +70,7 @@ def add_news():
         current_user.news.append(news)
         db_sess.merge(current_user)
         db_sess.commit()
-        return redirect('/')
+        return redirect(f'''/single_new/{db_sess.query(News).all()[-1].id}''')
     return render_template('news.html', title='Добавление новости',
                            form=form)
 
