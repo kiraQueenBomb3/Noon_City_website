@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>
+    {{name}}<br>
+    {{sex}}<br>
+    {{job}}<br>
+    {{reputation}}<br>
+</h1>
+{% endblock %}
+{% block content %}
+<h1>
+    {% for item in news%}
+    {%current_user == item.user%}
+        <div class="col-md6 border rounded">
+            <div>
+                {{item.content}}
+            </div>
+            <div>
+                Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
+            </div>
+        </div>
+{% endif %}
+    </h1>
+{% endfor%}
+
+{% endblock %}
