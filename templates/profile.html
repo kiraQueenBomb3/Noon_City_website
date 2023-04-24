@@ -2,16 +2,15 @@
 
 {% block content %}
 <h1>
-    {{name}}<br>
-    {{sex}}<br>
-    {{job}}<br>
-    {{reputation}}<br>
+    Известен как: {{name}}<br>
+    Идентифицирует себя как: {{sex}}<br>
+    Должность: {{job}}<br>
+    Статус: {{reputation}}<br>
 </h1>
-{% endblock %}
-{% block content %}
-<h1>
+
+<h2>
     {% for item in news%}
-    {%current_user == item.user%}
+    {% if user_id == item.user_id%}
         <div class="col-md6 border rounded">
             <div>
                 {{item.content}}
@@ -20,8 +19,18 @@
                 Автор - {{item.user.name}}, Дата написания - {{item.created_date}}
             </div>
         </div>
+    {% if current_user == item.user %}
+            <div>
+                <a href="/news/{{ item.id }}" class="btn btn-warning">
+                    Изменить
+                </a>
+                <a href="/news_delete/{{ item.id }}" class="btn btn-danger">
+                    Удалить
+                </a>
+            </div>
+        {% endif %}
 {% endif %}
-    </h1>
+    </h2>
 {% endfor%}
 
 {% endblock %}

@@ -80,11 +80,10 @@ def add_news():
 def index():
     db_sess = db_session.create_session()
     param = {}
-    param['username'] = "Ученик Яндекс.Лицея"
-    param['title'] = 'Домашняя страница'
+    param['title'] = 'Новости Noon City'
     param['news'] = db_sess.query(News)[::-1]
     if current_user.is_authenticated:
-        param['username'] = 'Loh'
+        pass
     else:
         pass  #  тут нужно убрать у зареганного ползователя кнопки войти и зарегаться, и заменить их на оставить запись
     return render_template('index.html', **param)
@@ -180,6 +179,7 @@ def profile(id):
     param['sex'] = person.sex
     param['job'] = person.job
     param['reputation'] = person.reputation
+    param['user_id'] = person.id
     if person:
         return render_template('profile.html', **param)
     else:
