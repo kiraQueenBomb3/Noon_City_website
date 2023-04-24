@@ -1,34 +1,43 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet"
-          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-          crossorigin="anonymous">
-    <title>{{title}}</title>
-</head>
-<body>
-<header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Наше приложение</a>
-        <a href="/index">Новости</a>
-        {% if current_user.is_authenticated %}
-        <a class="navbar-brand" href="/profile/{{current_user.id}}">{{ current_user.name }}</a>
-        <a class="navbar-brand" href="/logout">Выйти</a>
-        {% else %}
-        <p>
-            <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
-            <a class="btn btn-success" href="/login">Войти</a>
-        </p>
-        {% endif %}
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="/static/css/main.css" />
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous">
+        <title>{{title}}</title>
+    </head>
+    <body style="background-color: #8e06a4;">
+        <div id="header-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <header id="header">
+                            <a href="/index"><h1><img src="/static/img/logo.png" width="64px" height="64px"></h1></a>
+                            <nav id="nav">
+                                <a href="/index">Новости</a>
 
-    </nav>
-</header>
-<!-- Begin page content -->
-<main role="main" class="container">
-    {% block content %}{% endblock %}
-</main>
-</body>
+                                {% if current_user.is_authenticated %}
+                                <a href="/profile/{{current_user.id}}">{{ current_user.name }}</a>
+                                <a href="/logout">Выйти</a>
+                                {% else %}
+                                <a href="/register">Зарегистрироваться</a>
+                                <a href="/login">Войти</a>
+                                {% endif %}
+                            </nav>
+                        </header>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    <!-- Begin page content -->
+    <main role="main" class="container">
+        <h1>Новости Noon City и не только прямо в твоём телеграмме. <a href="https://t.me/NoonCityMainFixer_bot">@NoonCityMainFixer_bot</a></h1>
+        {% block content %}{% endblock %}
+    </main>
+    </body>
 </html>

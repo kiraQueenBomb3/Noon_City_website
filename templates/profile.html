@@ -13,14 +13,14 @@
     {% if user_id == item.user_id%}
     <div class="col-md6 border rounded">
         <div>
-            <a href="/single_new/{{ item.id }}" class="btn btn-warning">
-                {{item.content}}
-            </a>
-
+            <h3>Дата написания - {{item.created_date}}</h3>
         </div>
-        <div>
-            Дата написания - {{item.created_date}}
-        </div>
+    <div>
+        <a href="/single_new/{{ item.id }}" class="btn">
+            <h5>
+            {{item.content}}
+            </h5>
+        </a>
     </div>
     {% if current_user == item.user %}
     <div>

@@ -3,10 +3,14 @@
 
 {% block content %}
 <h1>
-    <a href="/profile/{{ new.user_id }}" class="btn btn-warning">
-    {{ new.user.name }}
-    </a><br>
-    {{new.content}}
+    <a href="/profile/{{ new.user_id }}">
+        <h1>
+        Автор - {{ new.user.name }}
+        </h1>
+    </a>
+    <h4>
+        {{new.content}}
+    </h4>
     {% if current_user.is_authenticated and current_user == new.user %}
     <div>
         <a href="/news/{{ new.id }}" class="btn btn-warning">

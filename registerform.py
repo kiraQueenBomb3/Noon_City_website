@@ -19,5 +19,4 @@ class RegisterForm(FlaskForm):
     favourite_gun = RadioField('Какое оружие предпочтёте в случае необходимости', choices=[
         'Скорострельные пушки - моё всё', 'Предпочитаю уничтожать одиночными выстрелами',
         'Тащусь с оружия ближнего боя', 'Импланты как у Алана Слэшера'], validators=[DataRequired()])
-    remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
