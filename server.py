@@ -186,6 +186,18 @@ def profile(id):
         abort(404)
 
 
+@app.route('/single_new/<int:id>')
+def single_new(id):
+    db_sess = db_session.create_session()
+    param = {}
+    new = db_sess.query(News).filter(News.id == id).first()
+    param['new'] = new
+    if new:
+        return render_template('single_new.html', **param)
+    else:
+        abort(404)
+
+
 if __name__ == '__main__':
     db_session.global_init("data\\noon_town.db")
     app.run(port=8080, host='127.0.0.1')

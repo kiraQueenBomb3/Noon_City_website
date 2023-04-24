@@ -11,26 +11,29 @@
 <h2>
     {% for item in news%}
     {% if user_id == item.user_id%}
-        <div class="col-md6 border rounded">
-            <div>
+    <div class="col-md6 border rounded">
+        <div>
+            <a href="/single_new/{{ item.id }}" class="btn btn-warning">
                 {{item.content}}
-            </div>
-            <div>
-                Дата написания - {{item.created_date}}
-            </div>
+            </a>
+
         </div>
+        <div>
+            Дата написания - {{item.created_date}}
+        </div>
+    </div>
     {% if current_user == item.user %}
-            <div>
-                <a href="/news/{{ item.id }}" class="btn btn-warning">
-                    Изменить
-                </a>
-                <a href="/news_delete/{{ item.id }}" class="btn btn-danger">
-                    Удалить
-                </a>
-            </div>
-        {% endif %}
-{% endif %}
-    </h2>
+    <div>
+        <a href="/news/{{ item.id }}" class="btn btn-warning">
+            Изменить
+        </a>
+        <a href="/news_delete/{{ item.id }}" class="btn btn-danger">
+            Удалить
+        </a>
+    </div>
+    {% endif %}
+    {% endif %}
+</h2>
 {% endfor%}
 
 {% endblock %}

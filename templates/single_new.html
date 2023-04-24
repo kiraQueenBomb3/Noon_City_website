@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1>
+    <a href="/profile/{{ new.user_id }}" class="btn btn-warning">
+    {{ new.user.name }}
+    </a><br>
+    {{new.content}}
+</h1>
+{% endblock %}
